@@ -36,11 +36,12 @@ auto-reset:
   enabled: true
   time-zone: "Asia/Shanghai"
   reset-time: "00:00:00"
+  period-time: 20
 
 # Auto Save Feature
 auto-save:
   enabled: true
-  period-time: 20
+  period-time: 1200
 
 # Join Tip Feature
 join-tip:
