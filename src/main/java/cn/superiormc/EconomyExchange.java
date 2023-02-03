@@ -128,13 +128,7 @@ public class EconomyExchange extends JavaPlugin {
             hookAmount++;
             Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §fFound No." + hookAmount + " economy plugin: PEconomy!");
         }
-        if (hookAmount < 2) {
-            Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §cYour economy plugin less than 2, plugin is disabling!");
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
-        if (hookAmount >=2) {
             Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §aFinished hook!");
-        }
         if (EconomyExchange.instance.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             papi = new PlaceholderAPIHook(this);
             Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §fHooking into PlaceholderAPI...");
