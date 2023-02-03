@@ -182,7 +182,7 @@ public class ExchangeManager{
     public void ExchangePEconomy(String currencyName)
     {
         PEconomyHook.GivePEconomy(currencyName, this.player, this.ExchangeEconomyAmount);
-        this.player.sendMessage(Messages.GetMessages("exchange-success-Custom").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
+        this.player.sendMessage(Messages.GetMessages("exchange-success-PEconomy").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
     }
 
     public void ExchangeCustom(String giveCommand)
