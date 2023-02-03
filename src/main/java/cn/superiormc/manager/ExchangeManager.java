@@ -73,6 +73,15 @@ public class ExchangeManager{
                 StartExchange();
             }
         }
+        else if(this.CostEconomyType.contains("Custom;;")){
+            String[] currencyInfo = this.CostEconomyType.split(";;");
+            if(currencyInfo[1] == null || currencyInfo[3] == null){
+                this.player.sendMessage(Messages.GetMessages("error-config-error-rule"));
+            }
+            else if(CheckData.GetDataType(this.player, this.ruleID, this.amount) && CostCustom(currencyInfo[1], currencyInfo[3])){
+                StartExchange();
+            }
+        }
         else{
             player.sendMessage(Messages.GetMessages("error-config-error-rule"));
         }
@@ -111,6 +120,16 @@ public class ExchangeManager{
             }
             else {
                 ExchangePEconomy(currencyName[1]);
+            }
+            SetData();
+        }
+        else if(this.ExchangeEconomyType.contains("Custom;;")){
+            String[] currencyInfo = this.ExchangeEconomyType.split(";;");
+            if(currencyInfo[2] == null) {
+                this.player.sendMessage(Messages.GetMessages("error-config-error-rule"));
+            }
+            else {
+                ExchangeCustom(currencyInfo[2]);
             }
             SetData();
         }
@@ -163,7 +182,13 @@ public class ExchangeManager{
     public void ExchangePEconomy(String currencyName)
     {
         PEconomyHook.GivePEconomy(currencyName, this.player, this.ExchangeEconomyAmount);
-        this.player.sendMessage(Messages.GetMessages("exchange-success-PEconomy").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
+        this.player.sendMessage(Messages.GetMessages("exchange-success-Custom").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
+    }
+
+    public void ExchangeCustom(String giveCommand)
+    {
+        CustomHook.GiveMoney(giveCommand.replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)), this.player, this.ExchangeEconomyAmount);
+        this.player.sendMessage(Messages.GetMessages("exchange-success-Custom").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
     }
 
     public boolean CostPlayerPoints()
@@ -246,6 +271,18 @@ public class ExchangeManager{
         }
         else {
             this.player.sendMessage(Messages.GetMessages("exchange-failure-PEconomy"));
+            return false;
+        }
+    }
+
+    public boolean CostCustom(String placeholder, String takeCommand)
+    {
+        if(CustomHook.CheckEnoughMoney(placeholder, this.player, this.CostEconomyAmount)) {
+            CustomHook.TakeMoney(takeCommand.replace("%amount%", String.valueOf(this.CostEconomyAmount)), this.player, this.CostEconomyAmount);
+            return true;
+        }
+        else {
+            this.player.sendMessage(Messages.GetMessages("exchange-failure-Custom"));
             return false;
         }
     }
