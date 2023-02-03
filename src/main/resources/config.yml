@@ -1,0 +1,131 @@
+# EconomyExchange by @PQguanfang
+#
+# READ THE WIKI: economyexchange.superiormc.cn
+#
+# This is the default rule, you can create unlimited rule in this plugin!
+# RULE NAME CAN NOT HAVE SPECIAL CHARACTERS OTHERWISE PLUGIN WILL PRINT ERROR!
+Default_Rule:
+  exchange-economy-type: PlayerPoints
+  exchange-amount: 1
+  cost-economy-type: Vault
+  cost-amount: 100
+  max-times-per-players: 10
+  max-times-global-players: 100
+
+# The second rule, maybe for VIPs?
+VIP_Rule:
+  exchange-economy-type: PlayerPoints
+  exchange-amount: 1
+  cost-economy-type: Vault
+  cost-amount: 50
+  max-times-per-players: 50
+  max-times-global-players: 500
+
+# MySQL Feature
+mysql:
+  enabled: false
+  host: localhost
+  port: 3306
+  username: root
+  password: 123456
+  database: my_server
+  global-name: "Global Server"
+
+# Auto Reset Feature
+auto-reset:
+  enabled: true
+  time-zone: "Asia/Shanghai"
+  reset-time: "00:00:00"
+
+# Auto Save Feature
+auto-save:
+  enabled: true
+  period-time: 20
+
+# Join Tip Feature
+join-tip:
+  enabled: true
+  condition-rule:
+    - "Default_Rule"
+  command: "exchange"
+
+# Permission Feature
+permission:
+  enabled: false
+  disabled-rules:
+    - "Default_Rule"
+
+# Custom Language Feature
+messages:
+  plugin-reloaded: "&#98FB98[EconomyExchange] &fPlugin reloaded!"
+  join-tip: "&#98FB98[EconomyExchange] &fYou can now cost money to get points, click here to learn more!"
+  error-only-in-game: "&#98FB98[EconomyExchange] &cYou have to use this command in game!"
+  error-miss-permission: "&#98FB98[EconomyExchange] &cYou don't have permission to use this command!"
+  error-miss-permission-rule: "&#98FB98[EconomyExchange] &cYou don't have permission to use this rule!"
+  error-only-use-with-permission: "&#98FB98[EconomyExchange] &cYou don't have permission to do this!"
+  error-args: "&#98FB98[EconomyExchange] &cWrong command usage, if you need help, use /economyexchange help!"
+  error-incorrect-args-int: "&#98FB98[EconomyExchange] &cYou must type a number here!"
+  error-incorrect-args-rule: "&#98FB98[EconomyExchange] &cWe can't find this rule!"
+  error-player-not-found: "&#98FB98[EconomyExchange] &cWe can't find this player!"
+  error-config-error: "&#98FB98[EconomyExchange] &cThere is something wrong in your config file!"
+  error-config-error-rule: "&#98FB98[EconomyExchange] &cThere is something wrong in your rule configs!"
+  error-max-times-per-players: "&#98FB98[EconomyExchange] &cYou have reached the max times of this rule!"
+  error-max-times-global-players: "&#98FB98[EconomyExchange] &cServer have reached the max times of this rule!"
+  error-mysql-error: "&#98FB98[EconomyExchange] &cCan't connect MySQL database!"
+  error-mysql-not-installed: "&#98FB98[EconomyExchange] &cCan't find MySQL drive class!"
+  error-sqlite-error: "&#98FB98[EconomyExchange] &cCan't connect SQLLite database!"
+  error-sqlite-not-installed: "&#98FB98[EconomyExchange] &cCan't find SQLLite drive class!"
+  # All messages also support multi lines, just do it like this!
+  help-main: |
+    &#98FB98&lEconomyExchange &7Made by @PQguanfang
+    &f/economyexchange help &7- View help.
+    &f/economyexchange use <ruleName> &7- Use the specified rule.
+    &f/economyexchange use <ruleName> <useTimes> &7- Use the specified rule for multiple times.
+    &f/economyexchange view <ruleName> &7 - View your left times of the rule.
+    &f/economyexchange view <ruleName> global&7 - View server left times of the rule.
+  help-main-admin: |
+    &#98FB98&lEconomyExchange &7Made by @PQguanfang
+    &f/economyexchange help &7- View help.
+    &f/economyexchange use <ruleName> &7- Use the specified rule.
+    &f/economyexchange use <ruleName> <useTimes> &7- Use the specified rule for multiple times.
+    &f/economyexchange reload &7- Reload the plugin.
+    &f/economyexchange view <ruleName> &7 - View your left times of the rule.
+    &f/economyexchange view <ruleName> global&7 - View server left times of the rule.
+    &f/economyexchange view <ruleName> <playerName> &7 - View specified player left times of the rule.
+    &f/economyexchange set <ruleName> <amount> &7 - Set your left times of the rule to specified amount.
+    &f/economyexchange set <ruleName> <playerName> <amount> &7 - Set specified player left times of the rule to specified amount.
+    &f/economyexchange set <ruleName> global <amount> &7 - Set server left times of the rule to specified amount.
+    &f/economyexchange reset &7 - Reset all data.
+    &f/economyexchange reset <ruleName> &7 - Reset specified rule data.
+  help-main-console: |
+    &#98FB98&lEconomyExchange &7Made by @PQguanfang
+    &f/economyexchange help &7- View help.
+    &f/economyexchange reload &7- Reload the plugin.
+    &f/economyexchange view <ruleName> global&7 - View server left times of the rule.
+    &f/economyexchange view <ruleName> <playerName> &7 - View specified player left times of the rule.
+    &f/economyexchange set <ruleName> <playerName> <amount> &7 - Set specified player left times of the rule to specified amount.
+    &f/economyexchange set <ruleName> global <amount> &7 - Set server left times of the rule to specified amount.
+    &f/economyexchange reset &7 - Reset all data.
+    &f/economyexchange reset <ruleName> &7 - Reset specified rule data.
+  exchange-success-PlayerPoints: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Points!"
+  exchange-failure-PlayerPoints: "&#98FB98[EconomyExchange] &cYou don't have enough Points!"
+  exchange-success-Vault: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Coins!"
+  exchange-failure-Vault: "&#98FB98[EconomyExchange] &cYou don't have enough Coins!"
+  exchange-success-GamePoints: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Points!"
+  exchange-failure-GamePoints: "&#98FB98[EconomyExchange] &cYou don't have enough Points!"
+  exchange-success-PlayerTitle: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Title Coins!"
+  exchange-failure-PlayerTitle: "&#98FB98[EconomyExchange] &cYou don't have enough Title Coins!"
+  exchange-success-PlayerTask: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Task Coins!"
+  exchange-failure-PlayerTask: "&#98FB98[EconomyExchange] &cYou don't have enough Task Coins!"
+  exchange-success-EliteMobs: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Elite Coins!"
+  exchange-failure-EliteMobs: "&#98FB98[EconomyExchange] &cYou don't have enough Elite Coins!"
+  exchange-success-PEconomy: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Currency Coin!"
+  exchange-failure-PEconomy: "&#98FB98[EconomyExchange] &cYou don't have enough Currency Coin!"
+  view-player: "&#98FB98[EconomyExchange] &fYour %rule% rule has %amount% use times left."
+  view-player-global: "&#98FB98[EconomyExchange] &fServer %rule% rule has %amount% use times left."
+  view-player-admin: "&#98FB98[EconomyExchange] &fSpecified player %rule% rule has %amount% use times left."
+  reset-success: "&#98FB98[EconomyExchange] &fSuccessfully reset all data!"
+  reset-success-rule: "&#98FB98[EconomyExchange] &fSuccessfully reset %rule% rule data!"
+  set-success-self: "&#98FB98[EconomyExchange] &fSuccessfully set your %rule% rule use times to %amount%!"
+  set-success-player: "&#98FB98[EconomyExchange] &fSuccessfully set %player% set your %rule% rule use times to %amount%!"
+  set-success-global: "&#98FB98[EconomyExchange] &fSuccessfully set server %rule% rule use times to %amount%!"

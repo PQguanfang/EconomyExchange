@@ -1,0 +1,20 @@
+name: EconomyExchange
+version: '${project.version}'
+main: cn.superiormc.EconomyExchange
+api-version: 1.13
+authors: [ PQguanfang ]
+softdepend:
+  - PlayerPoints
+  - Vault
+  - PlayerTitle
+  - PlayerTask
+  - EliteMobs
+  - GamePoints
+  - PEconomy
+  - PlaceholderAPI
+commands:
+  economyexchange:
+    aliases:
+      - "ee"
+    usage: "/economyexchange"
+    description: "EconomyExchange Main Command."
