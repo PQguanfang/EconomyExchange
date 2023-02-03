@@ -11,8 +11,6 @@ import java.util.regex.Pattern;
 
 public class MainExchange implements CommandExecutor {
 
-    private static final String[] SubCommands = {"help", "PlayerPoints"};
-
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length == 0) {
             command.setUsage(null);
