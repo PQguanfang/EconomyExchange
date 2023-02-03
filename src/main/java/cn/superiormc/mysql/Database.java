@@ -30,10 +30,8 @@ public class Database {
         Bukkit.getScheduler().runTaskAsynchronously(EconomyExchange.instance, () -> {
             if (MySQLConfigs.GetMySQLEnabled()) {
                 MySQLData.SavePlayerValueData();
-                MySQLData.SaveValueData();
             } else {
                 SQLLiteData.SavePlayerValueData();
-                SQLLiteData.SaveValueData();
             }
         });
     }

@@ -10,6 +10,7 @@ import cn.superiormc.events.QuitEvent;
 import cn.superiormc.hooks.PlaceholderAPIHook;
 import cn.superiormc.manager.DataManager;
 import cn.superiormc.mysql.Database;
+import cn.superiormc.mysql.MySQLData;
 import cn.superiormc.mysql.SQLLiteData;
 import cn.superiormc.tasks.AutoResetTask;
 import cn.superiormc.tasks.AutoSaveTask;
@@ -62,6 +63,16 @@ public class EconomyExchange extends JavaPlugin {
             AutoReset();
         }
         Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §fPlugin is loaded. Author: PQguanfang.");
+    }
+
+    @Override
+    public void onDisable(){
+        if (MySQLConfigs.GetMySQLEnabled()) {
+            MySQLData.SavePlayerValueData();
+        } else {
+            SQLLiteData.SavePlayerValueData();
+        }
+        Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §fPlugin is disabled. Author: PQguanfang.");
     }
 
     public void AutoReset() {
