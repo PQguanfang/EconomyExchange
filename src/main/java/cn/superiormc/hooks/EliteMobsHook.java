@@ -1,6 +1,7 @@
 package cn.superiormc.hooks;
 
 import cn.superiormc.EconomyExchange;
+import cn.superiormc.configs.Messages;
 import com.magmaguy.elitemobs.economy.EconomyHandler;
 import org.bukkit.entity.Player;
 
@@ -24,7 +25,7 @@ public class EliteMobsHook {
             EconomyHandler.addCurrency(player.getUniqueId(), amount);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 
@@ -33,7 +34,7 @@ public class EliteMobsHook {
             EconomyHandler.subtractCurrency(player.getUniqueId(), amount);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 

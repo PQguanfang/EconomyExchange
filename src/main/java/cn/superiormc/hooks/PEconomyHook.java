@@ -1,6 +1,7 @@
 package cn.superiormc.hooks;
 
 import cn.superiormc.EconomyExchange;
+import cn.superiormc.configs.Messages;
 import org.bukkit.entity.Player;
 import ru.soknight.peconomy.api.PEconomyAPI;
 import ru.soknight.peconomy.database.model.WalletModel;
@@ -29,7 +30,7 @@ public class PEconomyHook {
             peAPI.updateWallet(wallet);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 
@@ -40,7 +41,7 @@ public class PEconomyHook {
             peAPI.updateWallet(wallet);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 

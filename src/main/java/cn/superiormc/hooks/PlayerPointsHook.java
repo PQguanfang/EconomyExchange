@@ -1,6 +1,7 @@
 package cn.superiormc.hooks;
 
 import cn.superiormc.EconomyExchange;
+import cn.superiormc.configs.Messages;
 import org.black_ixx.playerpoints.PlayerPoints;
 import org.black_ixx.playerpoints.PlayerPointsAPI;
 import org.bukkit.entity.Player;
@@ -27,7 +28,7 @@ public class PlayerPointsHook {
             ppAPI.give(player.getUniqueId(), amount);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 
@@ -36,7 +37,7 @@ public class PlayerPointsHook {
             ppAPI.take(player.getUniqueId(), amount);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 }

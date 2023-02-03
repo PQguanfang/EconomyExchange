@@ -1,6 +1,7 @@
 package cn.superiormc.hooks;
 
 import cn.superiormc.EconomyExchange;
+import cn.superiormc.configs.Messages;
 import com.handy.playertask.api.PlayerTaskApi;
 import org.bukkit.entity.Player;
 
@@ -25,7 +26,7 @@ public class PlayerTaskHook {
             ptApi.addCoin(player.getName(), amount);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 
@@ -34,7 +35,7 @@ public class PlayerTaskHook {
             ptApi.subtractCoin(player.getName(), amount);
         }
         else {
-            player.sendMessage("error-config-error");
+            player.sendMessage(Messages.GetMessages("error-config-error"));
         }
     }
 }

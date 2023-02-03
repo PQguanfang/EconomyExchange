@@ -17,6 +17,7 @@ public class RulesConfigs {
         strings.remove("join-tip");
         strings.remove("mysql");
         strings.remove("auto-reset");
+        strings.remove("auto-save");
         return strings;
     }
 
