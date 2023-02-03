@@ -1,7 +1,6 @@
 package cn.superiormc.configs;
 
 import cn.superiormc.EconomyExchange;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.List;

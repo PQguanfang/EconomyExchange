@@ -1,7 +1,6 @@
 package cn.superiormc.configs;
 
 import cn.superiormc.EconomyExchange;
-import java.util.Arrays;
 
 public class ExchangeConfigs {
 
