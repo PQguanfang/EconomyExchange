@@ -22,6 +22,6 @@ public class MySQLConfigs {
     }
 
     public static boolean GetAutoSaveEnabled() {
-        return EconomyExchange.instance.getConfig().getBoolean("auto-save.period-time");
+        return EconomyExchange.instance.getConfig().getBoolean("auto-save.enabled");
     }
 }
