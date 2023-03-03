@@ -10,7 +10,7 @@ public class Messages {
         String textValue = EconomyExchange.instance.getConfig().getString("messages." + textName);
 
         if (textValue == null)
-            return "§x§9§8§F§B§9§8[EconomyExchange] §c&#98FB98[EconomyExchange] &cThere is something wrong in your config file!";
+            return "§x§9§8§F§B§9§8[EconomyExchange] &cThere is something wrong in your config file!";
         else {
             textValue = HexColor(textValue);
             return textValue.replace("&", "§");
