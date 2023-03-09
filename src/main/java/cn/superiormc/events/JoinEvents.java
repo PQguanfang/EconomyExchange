@@ -46,9 +46,8 @@ public class JoinEvents implements Listener {
     @EventHandler
     public void GetPlayerData(PlayerJoinEvent e) {
         String uuid = String.valueOf(e.getPlayer().getUniqueId());
-        Bukkit.getScheduler().runTaskLaterAsynchronously(EconomyExchange.instance, () -> {
-            Object obj = new Object();
-            synchronized(obj) {
+        Bukkit.getScheduler().runTaskLaterAsynchronously(EconomyExchange.instance, () -> {;
+            synchronized(e) {
                 List<String> ruleIDList = RulesConfigs.GetValidRule();
                 List<Integer> ruleValueList = new ArrayList<>();
                 ;
