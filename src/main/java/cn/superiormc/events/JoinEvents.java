@@ -46,11 +46,10 @@ public class JoinEvents implements Listener {
     @EventHandler
     public void GetPlayerData(PlayerJoinEvent e) {
         String uuid = String.valueOf(e.getPlayer().getUniqueId());
-        Bukkit.getScheduler().runTaskLaterAsynchronously(EconomyExchange.instance, () -> {;
+        Bukkit.getScheduler().runTaskLaterAsynchronously(EconomyExchange.instance, () -> {
             synchronized(e) {
                 List<String> ruleIDList = RulesConfigs.GetValidRule();
                 List<Integer> ruleValueList = new ArrayList<>();
-                ;
                 for (String ruleID : ruleIDList) {
                     int ruleValue = Database.GetValueData(e.getPlayer(), ruleID);
                     ruleValueList.add(ruleIDList.indexOf(ruleID), ruleValue);

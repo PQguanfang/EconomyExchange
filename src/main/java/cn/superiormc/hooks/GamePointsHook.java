@@ -3,6 +3,7 @@ package cn.superiormc.hooks;
 import cn.superiormc.EconomyExchange;
 import cn.superiormc.configs.Messages;
 import org.bukkit.entity.Player;
+import su.nightexpress.gamepoints.GamePoints;
 import su.nightexpress.gamepoints.api.GamePointsAPI;
 import su.nightexpress.gamepoints.data.PointUser;
 

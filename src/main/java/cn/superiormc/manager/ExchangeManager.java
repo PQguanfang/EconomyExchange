@@ -3,23 +3,22 @@ package cn.superiormc.manager;
 import cn.superiormc.configs.Messages;
 import cn.superiormc.hooks.*;
 import cn.superiormc.mysql.CheckData;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class ExchangeManager{
 
-    private Player player;
-    private String ruleID;
+    private final Player player;
+    private final String ruleID;
 
-    private int ExchangeEconomyAmount;
+    private final int ExchangeEconomyAmount;
 
-    private int CostEconomyAmount;
+    private final int CostEconomyAmount;
 
-    private String ExchangeEconomyType;
+    private final String ExchangeEconomyType;
 
-    private String CostEconomyType;
+    private final String CostEconomyType;
 
-    private int amount;
+    private final int amount;
 
     public ExchangeManager(Player player, String ruleID, int amount, int ExchangeEconomyAmount, int CostEconomyAmount, String ExchangeEconomyType, String CostEconomyType)
     {
@@ -73,6 +72,15 @@ public class ExchangeManager{
                 StartExchange();
             }
         }
+        else if(this.CostEconomyType.contains("UltraEconomy;;") && UltraEconomyHook.CheckLoadUltraEconomy()){
+            String[] currencyName = this.CostEconomyType.split(";;");
+            if(currencyName[1] == null){
+                this.player.sendMessage(Messages.GetMessages("error-config-error-rule"));
+            }
+            else if(CheckData.GetDataType(this.player, this.ruleID, this.amount) && CostUltraEconomy(currencyName[1])){
+                StartExchange();
+            }
+        }
         else if(this.CostEconomyType.contains("Custom;;")){
             String[] currencyInfo = this.CostEconomyType.split(";;");
             if(currencyInfo[1] == null || currencyInfo[3] == null){
@@ -120,6 +128,16 @@ public class ExchangeManager{
             }
             else {
                 ExchangePEconomy(currencyName[1]);
+            }
+            SetData();
+        }
+        else if(this.ExchangeEconomyType.contains("UltraEconomy;;") && UltraEconomyHook.CheckLoadUltraEconomy()){
+            String[] currencyName = this.ExchangeEconomyType.split(";;");
+            if(currencyName[1] == null) {
+                this.player.sendMessage(Messages.GetMessages("error-config-error-rule"));
+            }
+            else {
+                ExchangeUltraEconomy(currencyName[1]);
             }
             SetData();
         }
@@ -183,6 +201,12 @@ public class ExchangeManager{
     {
         PEconomyHook.GivePEconomy(currencyName, this.player, this.ExchangeEconomyAmount);
         this.player.sendMessage(Messages.GetMessages("exchange-success-PEconomy").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
+    }
+
+    public void ExchangeUltraEconomy(String currencyName)
+    {
+        UltraEconomyHook.GiveUltraEconomy(currencyName, this.player, this.ExchangeEconomyAmount);
+        this.player.sendMessage(Messages.GetMessages("exchange-success-UltraEconomy").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
     }
 
     public void ExchangeCustom(String giveCommand)
@@ -271,6 +295,18 @@ public class ExchangeManager{
         }
         else {
             this.player.sendMessage(Messages.GetMessages("exchange-failure-PEconomy"));
+            return false;
+        }
+    }
+
+    public boolean CostUltraEconomy(String currencyName)
+    {
+        if(UltraEconomyHook.CheckEnoughUltraEconomy(currencyName, this.player, this.CostEconomyAmount)) {
+            UltraEconomyHook.TakeUltraEconomy(currencyName, this.player, this.CostEconomyAmount);
+            return true;
+        }
+        else {
+            this.player.sendMessage(Messages.GetMessages("exchange-failure-UltraEconomy"));
             return false;
         }
     }

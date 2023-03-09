@@ -24,8 +24,7 @@ public class AutoResetTask {
     // 玩家每天进服都会有一个 SQL 的时间
     // 第二天时现在时间就会晚于 SQL 的时间
     public static ZonedDateTime GetNowingTime() {
-        ZonedDateTime zdt = Instant.now().atZone(ZoneId.of(AutoResetConfigs.GetAutoResetTimeZone()));
-        return zdt;
+        return Instant.now().atZone(ZoneId.of(AutoResetConfigs.GetAutoResetTimeZone()));
     }
 
     public static ZonedDateTime GetSQLTime() {

@@ -26,6 +26,7 @@ import static cn.superiormc.hooks.PEconomyHook.CheckLoadPEconomy;
 import static cn.superiormc.hooks.PlayerPointsHook.CheckLoadPlayerPoints;
 import static cn.superiormc.hooks.PlayerTaskHook.CheckLoadPlayerTask;
 import static cn.superiormc.hooks.PlayerTitleHook.CheckLoadPlayerTitle;
+import static cn.superiormc.hooks.UltraEconomyHook.CheckLoadUltraEconomy;
 import static cn.superiormc.hooks.VaultHook.CheckLoadVault;
 
 public class EconomyExchange extends JavaPlugin {
@@ -128,6 +129,10 @@ public class EconomyExchange extends JavaPlugin {
             hookAmount++;
             Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §fFound No." + hookAmount + " economy plugin: PEconomy!");
         }
+        if (CheckLoadUltraEconomy()) {
+            hookAmount++;
+            Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §fFound No." + hookAmount + " economy plugin: UltraEconomy!");
+        }
             Bukkit.getConsoleSender().sendMessage("§x§9§8§F§B§9§8[EconomyExchange] §aFinished hook!");
         if (EconomyExchange.instance.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             papi = new PlaceholderAPIHook(this);
@@ -164,8 +169,7 @@ public class EconomyExchange extends JavaPlugin {
         List<String> ruleIDList = RulesConfigs.GetValidRule();
         List<Integer> ruleValueList = new ArrayList<>();
         Bukkit.getScheduler().runTaskLaterAsynchronously(EconomyExchange.instance, () -> {
-            Object obj = new Object();
-            synchronized(obj) {
+            synchronized(this) {
                 for (String ruleID : ruleIDList) {
                     int ruleValue = Database.GetValueData(ruleID);
                     ruleValueList.add(ruleIDList.indexOf(ruleID), ruleValue);
