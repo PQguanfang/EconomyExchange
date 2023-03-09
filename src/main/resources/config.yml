@@ -122,6 +122,8 @@ messages:
   exchange-failure-EliteMobs: "&#98FB98[EconomyExchange] &cYou don't have enough Elite Coins!"
   exchange-success-PEconomy: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Currency Coin!"
   exchange-failure-PEconomy: "&#98FB98[EconomyExchange] &cYou don't have enough Currency Coin!"
+  exchange-success-UltraEconomy: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Currency Coin!"
+  exchange-failure-UltraEconomy: "&#98FB98[EconomyExchange] &cYou don't have enough Currency Coin!"
   exchange-success-Custom: "&#98FB98[EconomyExchange] &fSuccessfully exchange %amount% Currency Coin!"
   exchange-failure-Custom: "&#98FB98[EconomyExchange] &cYou don't have enough Currency Coin!"
   view-player: "&#98FB98[EconomyExchange] &fYour %rule% rule has %amount% use times left."
