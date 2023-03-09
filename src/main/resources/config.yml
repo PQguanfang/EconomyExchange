@@ -29,6 +29,8 @@ mysql:
   username: root
   password: 123456
   database: my_server
+  # Set this to "com.mysql.jdbc.Driver" if you are using < 1.18 version.
+  jdbc-class: "com.mysql.cj.jdbc.Driver"
   global-name: "Global Server"
 
 # Auto Reset Feature

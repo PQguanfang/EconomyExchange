@@ -14,7 +14,8 @@ public class MySQLConfigs {
         String database = EconomyExchange.instance.getConfig().getString("mysql.database");
         String username = EconomyExchange.instance.getConfig().getString("mysql.username");
         String password = EconomyExchange.instance.getConfig().getString("mysql.password");
-        MySQLData.MySQLConnect(host, port, database, username, password);
+        String className = EconomyExchange.instance.getConfig().getString("mysql.jdbc-class");
+        MySQLData.MySQLConnect(className, host, port, database, username, password);
     }
 
     public static long GetMySQLSaveTime() {

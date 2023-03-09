@@ -13,9 +13,9 @@ import java.util.UUID;
 public class MySQLData {
 
     public static Connection connection;
-    public static synchronized void MySQLConnect(String host, int port, String database, String username, String password) {
+    public static synchronized void MySQLConnect(String className, String host, int port, String database, String username, String password) {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(className);
         } catch (ClassNotFoundException e) {
             Bukkit.getConsoleSender().sendMessage(Messages.GetMessages("error-mysql-not-installed"));
             Bukkit.getPluginManager().disablePlugin(EconomyExchange.instance);
