@@ -1,7 +1,7 @@
 name: EconomyExchange
 version: '${project.version}'
 main: cn.superiormc.EconomyExchange
-api-version: 1.13
+api-version: 1.14
 authors: [ PQguanfang ]
 softdepend:
   - PlayerPoints

@@ -22,7 +22,7 @@ public class VaultHook {
     }
 
     public static boolean CheckEnoughVault(Player player, int amount){
-        return vAPI.has(player,amount);
+        return vAPI.has(player, amount);
     }
 
     public static void GiveVault(Player player, int amount){

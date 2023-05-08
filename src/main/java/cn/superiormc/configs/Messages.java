@@ -12,25 +12,9 @@ public class Messages {
         if (textValue == null)
             return "§x§9§8§F§B§9§8[EconomyExchange] §cThere is something wrong in your config file!";
         else {
-            textValue = HexColor(textValue);
-            return textValue.replace("&", "§");
+            textValue = ColorParser.parse(textValue);
+            return textValue;
         }
-    }
-
-    private static String HexColor(String textName) {
-        Pattern hexColorReplace = Pattern.compile("&#[a-fA-F0-9]{6}");
-        Matcher hexColorCode = hexColorReplace.matcher(textName);
-        while (hexColorCode.find()) {
-            String s = hexColorCode.group();
-            char code1 = s.charAt(2);
-            char code2 = s.charAt(3);
-            char code3 = s.charAt(4);
-            char code4 = s.charAt(5);
-            char code5 = s.charAt(6);
-            char code6 = s.charAt(7);
-            textName = textName.replace(s,"&x&" + code1 + "&" + code2 + "&" + code3 + "&" + code4 + "&" + code5 + "&" + code6);
-        }
-        return textName;
     }
 
 }
