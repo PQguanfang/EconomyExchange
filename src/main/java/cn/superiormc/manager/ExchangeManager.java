@@ -81,6 +81,15 @@ public class ExchangeManager{
                 StartExchange();
             }
         }
+        else if(this.CostEconomyType.contains("CoinsEngine;;") && UltraEconomyHook.CheckLoadUltraEconomy()){
+            String[] currencyName = this.CostEconomyType.split(";;");
+            if(currencyName[1] == null){
+                this.player.sendMessage(Messages.GetMessages("error-config-error-rule"));
+            }
+            else if(CheckData.GetDataType(this.player, this.ruleID, this.amount) && CostCoinsEngine(currencyName[1])){
+                StartExchange();
+            }
+        }
         else if(this.CostEconomyType.contains("Custom;;")){
             String[] currencyInfo = this.CostEconomyType.split(";;");
             if(currencyInfo[1] == null || currencyInfo[3] == null){
@@ -138,6 +147,16 @@ public class ExchangeManager{
             }
             else {
                 ExchangeUltraEconomy(currencyName[1]);
+            }
+            SetData();
+        }
+        else if(this.ExchangeEconomyType.contains("CoinsEngine;;") && CoinsEngineHook.CheckLoadCoinsEngine()){
+            String[] currencyName = this.ExchangeEconomyType.split(";;");
+            if(currencyName[1] == null) {
+                this.player.sendMessage(Messages.GetMessages("error-config-error-rule"));
+            }
+            else {
+                ExchangeCoinsEngine(currencyName[1]);
             }
             SetData();
         }
@@ -207,6 +226,12 @@ public class ExchangeManager{
     {
         UltraEconomyHook.GiveUltraEconomy(currencyName, this.player, this.ExchangeEconomyAmount);
         this.player.sendMessage(Messages.GetMessages("exchange-success-UltraEconomy").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
+    }
+
+    public void ExchangeCoinsEngine(String currencyName)
+    {
+        CoinsEngineHook.GiveCoinsEngine(currencyName, this.player, this.ExchangeEconomyAmount);
+        this.player.sendMessage(Messages.GetMessages("exchange-success-CoinsEngine").replace("%amount%", String.valueOf(this.ExchangeEconomyAmount)));
     }
 
     public void ExchangeCustom(String giveCommand)
@@ -307,6 +332,18 @@ public class ExchangeManager{
         }
         else {
             this.player.sendMessage(Messages.GetMessages("exchange-failure-UltraEconomy"));
+            return false;
+        }
+    }
+
+    public boolean CostCoinsEngine(String currencyName)
+    {
+        if(CoinsEngineHook.CheckEnoughCoinsEngine(currencyName, this.player, this.CostEconomyAmount)) {
+            CoinsEngineHook.TakeCoinsEngine(currencyName, this.player, this.CostEconomyAmount);
+            return true;
+        }
+        else {
+            this.player.sendMessage(Messages.GetMessages("exchange-failure-CoinsEngine"));
             return false;
         }
     }

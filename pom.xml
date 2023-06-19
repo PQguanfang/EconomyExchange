@@ -6,7 +6,7 @@
 
     <groupId>SuperiorMC</groupId>
     <artifactId>EconomyExchange</artifactId>
-    <version>1.6.2</version>
+    <version>1.7.0</version>
     <packaging>jar</packaging>
 
     <name>EconomyExchange</name>
@@ -162,6 +162,13 @@
             <artifactId>peconomy</artifactId>
             <version>2.7.3</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>su.nightexpress.coinsengine</groupId>
+            <artifactId>CoinsEngine</artifactId>
+            <version>2.0.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/CoinsEngine-2.0.1.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

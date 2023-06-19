@@ -23,18 +23,18 @@ public class UltraEconomyHook {
     }
 
     public static boolean CheckEnoughUltraEconomy(String currencyName, Player player, int amount){
-        if(UltraEconomy.getAPI().getCurrencies().name(currencyName) == null){
+        if (UltraEconomy.getAPI().getCurrencies().name(currencyName) == null){
             player.sendMessage(Messages.GetMessages("error-config-error"));
             return false;
         }
-        else{
+        else {
             float hasAmount = UltraEconomy.getAPI().getAccounts().uuid(player.getUniqueId()).get().getBalance(UltraEconomy.getAPI().getCurrencies().name(currencyName).get()).getOnHand();
             return hasAmount >= amount;
         }
     }
 
     public static void GiveUltraEconomy(String currencyName, Player player, int amount){
-        if(amount > 0 && UltraEconomy.getAPI().getCurrencies().name(currencyName) != null) {
+        if (amount > 0 && UltraEconomy.getAPI().getCurrencies().name(currencyName) != null) {
             UltraEconomy.getAPI().getAccounts().uuid(player.getUniqueId()).get().getBalance(UltraEconomy.getAPI().getCurrencies().name(currencyName).get()).addHand(amount);
         }
         else {
@@ -43,7 +43,7 @@ public class UltraEconomyHook {
     }
 
     public static void TakeUltraEconomy(String currencyName, Player player, int amount){
-        if(amount > 0 && UltraEconomy.getAPI().getCurrencies().name(currencyName) != null) {
+        if (amount > 0 && UltraEconomy.getAPI().getCurrencies().name(currencyName) != null) {
             UltraEconomy.getAPI().getAccounts().uuid(player.getUniqueId()).get().getBalance(UltraEconomy.getAPI().getCurrencies().name(currencyName).get()).removeHand(amount);
         }
         else {
